@@ -10,7 +10,7 @@ close all
 T_r = 550;
 gamma = 0.25;
 alpha = 4.76*(2+ 3*gamma);
-i=1
+
 for alpha = [13.09, 16, 20, 24, 28, 32, 36]
 syms T_p h_o2_tr h_n2_tr h_c3h8_tr h_ch4_tr h_n2_tp h_o2_tp h_h2o_tp h_co2_tp
 
@@ -34,9 +34,7 @@ eqns = [h_o2_tr == h_i_o2 + (a_o2 + b_o2*(0.5*(T_r + T_p)) + c_o2*(0.5*(T_r + T_
         - ((((3.76 * alpha) / 4.76) * h_n2_tp + ((alpha / 4.76) - 3*gamma - 2) * h_o2_tp + (2 + 2*gamma) * h_h2o_tp + (1 + 2*gamma) * h_co2_tp))];
     
 S = solve(eqns, [T_p h_o2_tr h_n2_tr h_c3h8_tr h_ch4_tr h_n2_tp h_o2_tp h_h2o_tp h_co2_tp]);
-T_ad = double(S.T_p);
-T_ad_array(i) = T_ad(1);
-i = i+1;
+double(S.T_p)
 end
         
 
