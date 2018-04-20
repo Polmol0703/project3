@@ -12,6 +12,7 @@ alpha_array = [13.09, 16, 20, 24, 28, 32, 36];
 i=1;
 for T_r = [300,550,800]
 gamma = 0.25;
+alpha_stoic = 4.76*(2+ 3*gamma);
 
 
 for alpha = alpha_array
@@ -58,8 +59,8 @@ xlabel('\alpha')
 ylabel('T_{af} - T_r')
 legend('300K', '550K', '800K')
 
-[xData_300, yData_300] = prepareCurveData( alpha_array, T_300 );
-ft = fittype( 'a*(x/0.5)^(-b)', 'independent', 'x', 'dependent', 'y' );
+[xData_300, yData_300] = prepareCurveData( alpha_array./alpha_stoic, T_300 );
+ft = fittype( 'a*(x)^(-b)', 'independent', 'x', 'dependent', 'y' );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 [fitresult_300, gof_300] = fit( xData_300, yData_300, ft, opts );
 figure(2)
@@ -75,8 +76,8 @@ mean_error_300 = mean(abs(T_300 - T_300_pred));
 fprintf('The maximum absolute deviation for T_r = 300K is %f', max_error_300, '\n')
 fprintf('The mean absolute deviation for T_r = 300K is %f', mean_error_300, '\n')
 
-[xData_550, yData_550] = prepareCurveData( alpha_array, T_550 );
-ft = fittype( 'a*(x/0.5)^(-b)', 'independent', 'x', 'dependent', 'y' );
+[xData_550, yData_550] = prepareCurveData( alpha_array./alpha_stoic, T_550 );
+ft = fittype( 'a*(x)^(-b)', 'independent', 'x', 'dependent', 'y' );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 [fitresult_550, gof_550] = fit(xData_550, yData_550, ft, opts );
 figure(3)
@@ -92,8 +93,8 @@ mean_error_550 = mean(abs(T_550 - T_550_pred));
 fprintf('The maximum absolute deviation for T_r = 550K is %f', max_error_550, '\n')
 fprintf('The mean absolute deviation for T_r = 550K is %f', mean_error_550, '\n')
 
-[xData_800, yData_800] = prepareCurveData( alpha_array, T_800);
-ft = fittype( 'a*(x/0.5)^(-b)', 'independent', 'x', 'dependent', 'y' );
+[xData_800, yData_800] = prepareCurveData( alpha_array./alpha_stoic, T_800);
+ft = fittype( 'a*(x)^(-b)', 'independent', 'x', 'dependent', 'y' );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 [fitresult_800, gof_800] = fit( xData_800, yData_800, ft, opts );
 figure(4)
