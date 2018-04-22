@@ -1,4 +1,4 @@
-function [t_2, W, h_2] = t2_w_h2_finder (p_2, eff_comp)
+function [t_2, W, h_2] = t2_W_h2_finder (p_2, eff_comp)
 t_1 = 25 + 273;
 t_2_guess = t_1 + 1; % left guess t2 in Kelvin
 t_2_right_guess = 500 + 273; % right guess t2 in Kelvin
