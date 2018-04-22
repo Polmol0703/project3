@@ -3,7 +3,6 @@ close all
 
 for T_r = [300, 550, 800]
 [xData, yData, fitresult, a, n, T_af_array, alpha_array] = curvefit(T_r);
-
 T = T_af_array - T_r;
 hold on
 loglog(alpha_array, T)
