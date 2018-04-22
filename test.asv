@@ -1,0 +1,12 @@
+clear all
+close all
+[xData, yData, fitresult, a, n, T_af_array] = curvefit(800);
+
+figure(1)
+loglog(T)
+
+figure(2)
+plot(fitresult, xData, yData);
+xlabel('\alpha')
+ylabel('T_{af} - T_r')
+

@@ -10,7 +10,7 @@ close all
 alpha_array = [13.09, 16, 20, 24, 28, 32, 36];
 
 i=1;
-for T_r = [300,550,800]
+T_r = 300;
 gamma = 0.25;
 alpha_stoic = 4.76*(2+ 3*gamma);
 
@@ -42,22 +42,9 @@ T_af = double(S.T_p);
 T_af_array(i) = T_af(1);
 i = i+1;
 end        
-end
 
-T_af_array_300 = T_af_array(1:7);
-T_af_array_550 = T_af_array(8:14);
-T_af_array_800 = T_af_array(15:21);
 
-T_300 = T_af_array_300 - T_r;
-T_550 = T_af_array_550 - T_r;
-T_800 = T_af_array_800 - T_r;
-
-figure(1)
-loglog(alpha_array, T_300, '-r', alpha_array, T_550, '-b', ...
-alpha_array, T_800, '-g')
-xlabel('\alpha')
-ylabel('T_{af} - T_r')
-legend('300K', '550K', '800K')
+T = T_af_array - T_r;
 
 [xData_300, yData_300] = prepareCurveData( alpha_array./alpha_stoic, T_300 );
 ft = fittype( 'a*(x)^(-b)', 'independent', 'x', 'dependent', 'y' );
@@ -70,7 +57,7 @@ ylabel('T_{af} - T_r')
 coeff_300 = coeffvalues(fitresult_300);
 a_300 = coeff_300(1);
 n_300 = coeff_300(2);
-T_300_pred = a_300.*(alpha_array./0.5).^(-n_300);
+T_300_pred = a_300.*(alpha_array./alpha_stoic).^(-n_300);
 max_error_300 = max(abs(T_300 - T_300_pred));
 mean_error_300 = mean(abs(T_300 - T_300_pred));
 fprintf('The maximum absolute deviation for T_r = 300K is %f', max_error_300, '\n')
@@ -87,7 +74,7 @@ ylabel('T_{af} - T_r')
 coeff_550 = coeffvalues(fitresult_550);
 a_550 = coeff_550(1);
 n_550 = coeff_550(2);
-T_550_pred = a_550.*(alpha_array./0.5).^(-n_550);
+T_550_pred = a_550.*(alpha_array./alpha_stoic).^(-n_550);
 max_error_550 = max(abs(T_550 - T_550_pred));
 mean_error_550 = mean(abs(T_550 - T_550_pred));
 fprintf('The maximum absolute deviation for T_r = 550K is %f', max_error_550, '\n')
@@ -104,7 +91,7 @@ ylabel('T_{af} - T_r')
 coeff_800 = coeffvalues(fitresult_800);
 a_800 = coeff_800(1);
 n_800 = coeff_800(2);
-T_800_pred = a_800.*(alpha_array./0.5).^(-n_800);
+T_800_pred = a_800.*(alpha_array./alpha_stoic).^(-n_800);
 max_error_800 = max(abs(T_800 - T_800_pred));
 mean_error_800 = mean(abs(T_800 - T_800_pred));
 fprintf('The maximum absolute deviation for T_r = 800K is %f', max_error_800, '\n')
