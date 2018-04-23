@@ -1,4 +1,4 @@
-function [xData, yData, fitresult, a, n, T_af_array, alpha_array] = curvefit(T_r)
+function [xData, yData, fitresult, a, n, T_af_array, alpha_array,T] = curvefit(T_r)
 
 [a_o2, b_o2, c_o2, d_o2, h_i_o2] = findConstants('o2--');
 [a_n2, b_n2, c_n2, d_n2, h_i_n2] = findConstants('n2--');

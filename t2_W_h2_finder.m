@@ -1,4 +1,4 @@
-function [t_2, W, h_2] = t2_W_h2_finder (p_2, eff_comp)
+function [t_2, W, h_2] = t2_W_h2_finder(p_2, eff_comp)
 t_1 = 25 + 273;
 t_2_guess = t_1 + 1; % left guess t2 in Kelvin
 t_2_right_guess = 500 + 273; % right guess t2 in Kelvin
@@ -15,7 +15,7 @@ while e > 0.2
     k = cp_air / c_v;
     t_2 = t_1*(p_2/p_1)^((k-1)/k);
     e = abs(t_2_guess - t_2);
-    t_2_guess = t_2_guess + 0.1;
+    t_2_guess = t_2;
 end
 t_2 = t_2_guess;
 W = cp_air*(t_2 - t_1)/eff_comp;

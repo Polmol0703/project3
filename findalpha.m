@@ -20,12 +20,10 @@ m_dot_air = 6; %in kg/s
 molar_mass_air = 0.02897; %kg/mol
 n_dot_air = (m_dot_air/molar_mass_air); %mol/s
 n_dot_fuel = n_dot_air / alpha_guess;
-% moles_prod_per_fuel = (alpha_guess/4.76)+(3.76*alpha_guess/4.76)+1; % moles of product per moles of fuel
 moles_prod_per_fuel = alpha_guess + gamma + 1; % moles of product per moles of fuel
 n_dot_prod = n_dot_fuel * moles_prod_per_fuel; %mol/s
 
     while e>0.2
-        [t_2, W, h_2] = t2_W_h2_finder(500000, 0.5);
         [y_H2O, y_CO2, y_N2, y_O2] = mol_frac_finder(alpha_guess, gamma);
         t_avg_turbine = 0.5*(t_4 + t_5_guess);
         [cp_prod] = cp_prod_finder(y_H2O, y_CO2, y_N2, y_O2, t_avg_turbine); %kJ/kmol K 
@@ -69,12 +67,6 @@ w_net = w_t_actual - w_c_actual;
 q_c = cp_prod*(t_4 - t_3)*n_dot_prod;
 eff_cycle = w_net / (q_c + q_dot_sol);
 eff_cycle_constant_cp = 1 - (t_1/t_4)*(p_2/p_1)^((k_prod-1)/k_prod);
-t_1
-t_2
-t_2r
-t_3
-t_4
-t_5
 
 
 

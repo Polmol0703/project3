@@ -50,4 +50,11 @@ plot([0,2,2.5,3], eff_cycle_array(1:4), '-r',...
 xlabel('Solar Power')
 ylabel('Cycle Efficiency')
 legend('\gamma = 0', '\gamma = 0.25', '\gamma = 0.5')
+figure(4)
+plot([0,2,2.5,3], q_c_array(1:4), '-r',...
+[0,2,2.5,3], q_c_array(5:8), '-b',...
+[0,2,2.5,3], q_c_array(9:12), '-g')
+xlabel('Solar Power')
+ylabel('Combustor Heat Input')
+legend('\gamma = 0', '\gamma = 0.25', '\gamma = 0.5')
 
