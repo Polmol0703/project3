@@ -52,11 +52,7 @@ coeff = coeffvalues(fitresult);
 a = coeff(1);
 n = coeff(2);
 
-% T_pred = a.*(alpha_array./alpha_stoic).^(-n);
-% max_error = max(abs(T - T_pred));
-% mean_error = mean(abs(T - T_pred));
-% fprintf('The maximum absolute deviation for T_r = %f is %f \n', T_r, max_error)
-% fprintf('The mean absolute deviation for T_r = %f is %f \n', T_r, mean_error)
+
 
 
 

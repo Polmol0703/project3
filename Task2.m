@@ -1,7 +1,8 @@
 clear all
 close all
 
-
+gamma = 0.25;
+alpha_stoic = 4.76*(2+ 3*gamma);
 for T_r = [300,550,800]
 [xData, yData, fitresult, a, n, T_af_array, alpha_array] = curvefit(T_r);
 T = T_af_array - T_r;
@@ -11,6 +12,11 @@ hold on
 xlabel('\alpha')
 ylabel('T_{af} - T_r')
 legend('300K', '500K', '800K')
+T_pred = a.*(alpha_array./alpha_stoic).^(-n);
+max_error = max(abs(T - T_pred));
+mean_error = mean(abs(T - T_pred));
+fprintf('The maximum absolute deviation for T_r = %f is %f \n', T_r, max_error)
+fprintf('The mean absolute deviation for T_r = %f is %f \n', T_r, mean_error)
 end 
 
 i = 1;

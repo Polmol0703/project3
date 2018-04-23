@@ -17,7 +17,7 @@ eff_cycle = [];
 i = 1;
 for q_dot_sol = [0, 2e6, 2.5e6, 3e6]
 
-    [alpha, t_5, w_t_actual, w_c_actual, w_net, q_c, eff_cycle] = findalpha(eff_comp, eff_turbine, eff_reg, p_2, gamma, t_4, q_dot_sol);
+    [alpha, t_5, w_t_actual, w_c_actual, w_net, q_c, eff_cycle, eff_cycle_constant_cp] = findalpha(eff_comp, eff_turbine, eff_reg, p_2, gamma, t_4, q_dot_sol);
 
     alpha_array(i) = alpha;
     w_net_array(i) = w_net;

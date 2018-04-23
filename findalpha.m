@@ -1,4 +1,4 @@
-function [alpha, t_5, w_t_actual, w_c_actual, w_net, q_c, eff_cycle] = findalpha(eff_comp, eff_turbine, eff_reg, p_2, gamma, t_4, q_dot_sol)  
+function [alpha, t_5, w_t_actual, w_c_actual, w_net, q_c, eff_cycle, eff_cycle_constant_cp] = findalpha(eff_comp, eff_turbine, eff_reg, p_2, gamma, t_4, q_dot_sol)  
 
 i = 1;
 e2 = 1;
@@ -68,5 +68,13 @@ w_c_actual = cp_air*(t_2-t_1)*n_dot_air*eff_comp;
 w_net = w_t_actual - w_c_actual;
 q_c = cp_prod*(t_4 - t_3)*n_dot_prod;
 eff_cycle = w_net / (q_c + q_dot_sol);
+eff_cycle_constant_cp = 1 - (t_1/t_4)*(p_2/p_1)^((k_prod-1)/k_prod);
+t_1
+t_2
+t_2r
+t_3
+t_4
+t_5
+
 
 
